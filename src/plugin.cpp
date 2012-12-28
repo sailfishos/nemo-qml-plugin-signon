@@ -34,7 +34,6 @@
 #include <QDeclarativeEngine>
 #include <QDeclarativeExtensionPlugin>
 
-#include "authsessioninterface.h"
 #include "identityinterface.h"
 #include "identitymanagerinterface.h"
 #include "serviceaccountidentityinterface.h"
@@ -61,7 +60,6 @@ public:
         // Types which should be exposed to "normal" applications:
         qmlRegisterType<ServiceAccountIdentityInterface>(uri, 1, 0, "ServiceAccountIdentity");
         qmlRegisterType<SessionDataInterface>(uri, 1, 0, "SessionData");
-        qmlRegisterUncreatableType<AuthSessionInterface>(uri, 1, 0, "AuthSession", m2);
 
         // Types which should be exposed to "settings" application:
         qmlRegisterType<IdentityManagerInterface>(uri, 1, 0, "IdentityManager");
