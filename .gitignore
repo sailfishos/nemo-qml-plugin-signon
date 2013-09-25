@@ -1,0 +1,7 @@
+tests/tests.xml
+Makefile
+.moc
+.obj
+src/libnemosignon.so
+tests/tst_identityinterface/tst_identityinterface
+tests/tst_serviceaccountidentityinterface/tst_serviceaccountidentityinterface
