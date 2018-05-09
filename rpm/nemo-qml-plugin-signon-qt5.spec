@@ -5,7 +5,7 @@ Version:    0.0.0
 Release:    1
 Group:      System/Libraries
 License:    BSD
-URL:        https://github.com/nemomobile/nemo-qml-plugin-signon
+URL:        https://git.merproject.org/mer-core/nemo-qml-plugin-signon
 Source0:    %{name}-%{version}.tar.bz2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
