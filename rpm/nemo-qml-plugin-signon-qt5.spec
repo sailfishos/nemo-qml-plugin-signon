@@ -38,6 +38,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %{_libdir}/qt5/qml/org/nemomobile/signon/libnemosignon.so
+%{_libdir}/qt5/qml/org/nemomobile/signon/plugins.qmltypes
 %{_libdir}/qt5/qml/org/nemomobile/signon/qmldir
 
 %files signon-tests
