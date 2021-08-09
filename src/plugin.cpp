@@ -30,17 +30,9 @@
  */
 
 #include <QtGlobal>
-#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
-# include <QtQml>
-# include <QQmlEngine>
-# include <QQmlExtensionPlugin>
-# define QDeclarativeEngine QQmlEngine
-# define QDeclarativeExtensionPlugin QQmlExtensionPlugin
-#else
-# include <QtDeclarative>
-# include <QDeclarativeEngine>
-# include <QDeclarativeExtensionPlugin>
-#endif
+#include <QtQml>
+#include <QQmlEngine>
+#include <QQmlExtensionPlugin>
 
 #include "identityinterface.h"
 #include "identitymanagerinterface.h"
@@ -51,16 +43,15 @@
 #include "signonuicontainerinterface.h"
 #endif
 
-class Q_DECL_EXPORT NemoSignonPlugin : public QDeclarativeExtensionPlugin
+class Q_DECL_EXPORT NemoSignonPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
-#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
     Q_PLUGIN_METADATA(IID "org.nemomobile.signon")
-#endif
+
 public:
     virtual ~NemoSignonPlugin() { }
 
-    void initializeEngine(QDeclarativeEngine *engine, const char *uri)
+    void initializeEngine(QQmlEngine *engine, const char *uri)
     {
         Q_ASSERT(uri == QLatin1String("org.nemomobile.signon"));
         Q_UNUSED(engine)
@@ -86,9 +77,5 @@ public:
         qmlRegisterType<IdentityInterface>(uri, 1, 0, "Identity");
     }
 };
-
-#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
-Q_EXPORT_PLUGIN2(nemosignon, NemoSignonPlugin);
-#endif
 
 #include "plugin.moc"

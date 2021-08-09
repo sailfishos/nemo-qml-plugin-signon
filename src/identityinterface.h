@@ -37,14 +37,8 @@
 #include <QtCore/QString>
 
 #include <QtGlobal>
-#if QT_VERSION_5
 #include <QtQml>
 #include <QQmlParserStatus>
-#define QDeclarativeParserStatus QQmlParserStatus
-#else
-#include <qdeclarative.h>
-#include <QDeclarativeParserStatus>
-#endif
 
 //libsignon-qt
 #include <SignOn/Identity>
@@ -59,10 +53,10 @@ class IdentityManagerInterface;
  * directly after construction.
  */
 
-class IdentityInterface : public QObject, public QDeclarativeParserStatus
+class IdentityInterface : public QObject, public QQmlParserStatus
 {
     Q_OBJECT
-    Q_INTERFACES(QDeclarativeParserStatus)
+    Q_INTERFACES(QQmlParserStatus)
 
     Q_PROPERTY(int identifier READ identifier WRITE setIdentifier NOTIFY identifierChanged)
     Q_PROPERTY(bool identifierPending READ identifierPending WRITE setIdentifierPending NOTIFY identifierPendingChanged)

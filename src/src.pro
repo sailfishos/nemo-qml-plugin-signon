@@ -3,12 +3,10 @@ PLUGIN_IMPORT_PATH = org/nemomobile/signon
 
 TEMPLATE = lib
 CONFIG += qt plugin hide_symbols
-equals(QT_MAJOR_VERSION, 4): QT += declarative
-equals(QT_MAJOR_VERSION, 5): QT += qml
+QT += qml
 QT -= gui
 
-equals(QT_MAJOR_VERSION, 4): target.path = $$[QT_INSTALL_IMPORTS]/$$PLUGIN_IMPORT_PATH
-equals(QT_MAJOR_VERSION, 5): target.path = $$[QT_INSTALL_QML]/$$PLUGIN_IMPORT_PATH
+target.path = $$[QT_INSTALL_QML]/$$PLUGIN_IMPORT_PATH
 INSTALLS += target
 
 qmldir.files += qmldir plugins.qmltypes
@@ -17,12 +15,10 @@ INSTALLS += qmldir
 
 qmltypes.commands = qmlplugindump -nonrelocatable org.nemomobile.signon 1.0 > $$PWD/plugins.qmltypes
 QMAKE_EXTRA_TARGETS += qmltypes
-
-equals(QT_MAJOR_VERSION, 5): DEFINES += QT_VERSION_5 SIGNON_UI_NO_EMBED_WEBVIEW
+DEFINES += SIGNON_UI_NO_EMBED_WEBVIEW
 
 CONFIG += link_pkgconfig
-equals(QT_MAJOR_VERSION, 4): PKGCONFIG += libsignon-qt
-equals(QT_MAJOR_VERSION, 5): PKGCONFIG += libsignon-qt5
+PKGCONFIG += libsignon-qt5
 
 SOURCES += \
            $$PWD/identityinterface.cpp \
